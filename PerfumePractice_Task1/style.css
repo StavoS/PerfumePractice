@@ -4,50 +4,54 @@ body{
 .container{
     display: flex;
     justify-content: center;
-    height: 500px;
+    align-items: center;
+    height: 600px;
 }
 .perfume>p{
     margin-left: 10%;
-    font-size: 7px;
+    font-size: 15px;
     color: grey;
 }
 .perfume>h1{
     margin-left: 10%;
-    font-size: 15px;
+    font-size: 22px;
 }
 .perfume>h2{
+    display: inline;
     margin-left: 10%;
     color: green;
-    font-size: 10px;
+    font-size: 25px;
     font-family: "Amita", sans-serif;
 }
 #old_price{
     color: grey;
     text-decoration: line-through;
-    font-size: 5px;
+    font-size: 10px;
     left: 8px;
-    bottom: 2px;
+    bottom: 8px;
     position: relative;
 }
 #perf_img{
-    width: 120px;
-    height: 200px;
+    width: 240px;
+    height: 360px;
     border-top-left-radius: 2%;
     border-bottom-left-radius: 2%;
 }
 #item2{
-    width: 120px;
-    height: 200px;
+    width: 240px;
+    height: 360px;
     border-bottom-right-radius: 2%;
     border-top-right-radius: 2%;
     background-color: white;
+    bottom: 2px;
+    position: relative;
 }
 #cart{
     display: block;
-    width: 100px;
-    height: 25px;
+    width: 200px;
+    height: 40px;
     margin-left: 10%;
-    font-size: 7px;
+    font-size: 14px;
     background-color: green;
     color: white;
     border: solid;
