@@ -12,16 +12,16 @@ body{
     border-bottom-left-radius: 10%;
 }
 #item2{
-    border-top-right-radius: 10%;
     border-bottom-right-radius: 10%;
+    border-top-right-radius: 10%;
 }
 #item2>p{
     color: grey;
-    margin-left: 20px;
+    margin-left: 10%;
     font-size: 12px;
 }
 #item2>h1{
-    margin-left: 20px;
+    margin-left: 10%;
     font-size: 25px;
 }
 #old_price{
