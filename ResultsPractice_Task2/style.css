@@ -7,10 +7,51 @@ body{
     align-items: center;
     height: 600px;
 }
+#result-1{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-image: linear-gradient(to bottom, rgba(100,65,253,255), rgba(51,45,233,255));
+    border-top-left-radius: 10%;
+    border-bottom-left-radius: 10%;
+}
+#box-2{
+    background-image: linear-gradient(to bottom, rgba(76,35,202,255), rgba(71,52,240,255));
+    font-size: 50px;
+    color: white;
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    padding: 35px;
+    border-radius: 50%;
+}
+.outcome>h1{
+    display: inline;
+    font-size: 20px;
+    color: rgba(204,199,255,255)
+}
+.outcome>h2{
+    display: inline;
+    color: white;
+}
+.outcome>p{
+    display: flex;
+    text-align: center;
+    color: rgba(204,199,255,255);
+}
+.outcome>span{
+    color: rgba(140,127,255,255);
+    font-size: 15px;
+    font-weight: bold;
+    position: relative;
+    bottom: 35px;
+}
 #result-2{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    align-items: center;
     border-top-right-radius: 10%;
     border-bottom-right-radius: 10%;
 }
@@ -26,24 +67,26 @@ body{
 #visual{
     background-color: rgba(152,157,218,255);
 }
-
+#continue{
+    border-radius: 30vh;
+    background-color: rgba(48,59,89,255);
+    color: white;
+}
 .results{
     height: 402px;
     width: 284px;
     background-color: white;
 }
 .grade{
-    margin-left: 15%;
+    display: flex;
+    justify-content: space-around;
     width: 180px;
     padding: 10px;
     border-radius: 2vh;
 }
 .grade>span{
-    margin-left: 10%;
+    color: grey
 }
 .results>h1{
     font-size: 20px;
-}
-img{
-    border-radius: 10%;
 }
