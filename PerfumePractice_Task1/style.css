@@ -1,6 +1,7 @@
 body{
     background-color: rgb(243, 234, 227);
 }
+
 #container{
     height: 600px;
     display: flex;
@@ -63,4 +64,11 @@ img{
 }
 a{
     text-decoration: none;
+}
+
+@media (max-width:600px) {
+    #container{
+        display: flex;
+        flex-direction: column;
+    }
 }
