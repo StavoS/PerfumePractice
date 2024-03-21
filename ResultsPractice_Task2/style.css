@@ -55,16 +55,16 @@ body{
     border-top-right-radius: 10%;
     border-bottom-right-radius: 10%;
 }
-#reaction{
+.reaction{
     background-color: rgba(252,179,179,255);
 }
-#memory{
+.memory{
     background-color: rgba(255,215,131,255);
 }
-#verbal{
+.verbal{
     background-color: rgba(120,204,185,255);
 }
-#visual{
+.visual{
     background-color: rgba(152,157,218,255);
 }
 #continue{
