@@ -8,6 +8,31 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     background-image: url("pizza.PNG");
 }
+.video-background{
+    width: 100%;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.video-content a{
+    text-decoration: none;
+    font-size: 40px;
+    background-color: rgb(225, 48, 48);
+    color: black;
+    border-radius: 10vh;
+    border: solid 3px;
+    padding: 20px;
+    transition: 0.5s;
+}
+.video-content a:hover{
+    background-color: white;
+    color: black;
+}
+.background-clip{
+    position: absolute;
+    z-index: -1;
+}
 #pizza_order_back{
     width: 100%;
     margin-top: 3%;
