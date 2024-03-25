@@ -86,6 +86,9 @@ footer img{
     height: 60px;
     width: 60px;
 }
+footer :first-child{
+    flex-direction: row;
+}
 .link-container{
     display: flex;
     justify-content: space-evenly;
@@ -107,24 +110,19 @@ footer img{
 /*From here it's not the homepage!!!!!*/
 .product{
     display: flex;
-    justify-content: center;
     margin-top: 5%;
+    margin-bottom: 5%;
 }
 .product img{
-    width: 700px;
-    height: 500px;
-    border-top-left-radius: 10vh;
-    border-bottom-left-radius: 10vh;
+    width: 100%;
 }
 .product-description{
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
-    width: 700px;
+    width: 100%;
     gap: 220px;
-    border-top-right-radius: 10vh;
-    border-bottom-right-radius: 10vh;
     background-color: rgb(187, 74, 74);
 }
 .product-description :first-child{
@@ -145,6 +143,16 @@ footer img{
     background-color: white;
     color: brown;
 }
+.options{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 35px;
+}
+.options img{
+    width: 80px;
+    height: 60px;
+}
 
 @media (max-width: 728px) {
     nav{
@@ -154,10 +162,10 @@ footer img{
         display: flex;
         flex-direction: column;
     }
-    footer img{
-        display: flex;
+    nav :last-child{
         flex-direction: row;
-        margin-top: 5%;
+        align-items: center;
+        margin-top: 3%;
     }
     .pizza-collection{
         grid-template-columns: repeat(1, 1fr);
