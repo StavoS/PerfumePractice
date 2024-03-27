@@ -78,7 +78,7 @@ body{
 }
 #rolling_pizza{
     position: absolute;
-    top: 1900px;
+    top: 1950px;
     left: 430px;
     z-index: -1;
     
@@ -125,7 +125,7 @@ footer :first-child{
     text-decoration: none;
 }
 
-/*From here it's not the homepage!!!!!*/
+/*From here it's not the homepage*/
 .product{
     display: flex;
     margin-top: 5%;
