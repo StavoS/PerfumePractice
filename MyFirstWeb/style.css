@@ -24,7 +24,7 @@ body{
     color: black;
     border-radius: 10vh;
     border: solid 3px;
-    padding: 20px;
+    padding: 10px;
     transition: 2s;
 }
 .video-content a:hover{
@@ -57,7 +57,7 @@ body{
     margin-right: 3%;
 }
 .pizza img{
-    width: 250px;
+    width: 200px;
     height: 150px;
     margin-right: 5%;
 }
@@ -172,7 +172,7 @@ footer :first-child{
     height: 60px;
 }
 
-@media (max-width: 728px) {
+@media (max-width: 768px) {
     nav{
         flex-direction: column;
     }
