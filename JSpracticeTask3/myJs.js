@@ -16,16 +16,6 @@ const viewBoard = board =>{
     console.log('\n');
 }
 
-const updateBoardFirstPlayer = (board, row, column) =>{
-    board[row - 1][column - 1] = "X";
-    return board;
-}
-
-const updateBoardSecPlayer = (board, row, column) => {
-    board[row - 1][column - 1] = "O";
-    return board;
-}
-
 const checkInputValid = (boardLength, rowInput, colInput) =>{
     if(!Number(rowInput) || !Number(colInput))
         return false;
@@ -40,24 +30,29 @@ const checkValidPlacement = (board, row, col) =>{
      return board[row - 1][col - 1] === "?";
 }
 
+const updateBoardPlayer = (board, row, column, playerShape) =>{
+    board[row - 1][column - 1] = playerShape;
+    return board;
+}
+
 const checkGameOver = (board, playerShape) =>{
     let col_counter = 0;
     let slant_counter = 0;
     let opp_slant_counter = 0;
 
     for(let i = 0; i < board.length; i++){
-        if(board[i].every(element => element === board[i][0] && element === 'X'))
+        if(board[i].every(element => element === board[i][0] && element === playerShape))
             return true;
         
         for(let j = 0; j < board.length; j++){
-            if(board[j][i] === "X"){
+            if(board[j][i] === playerShape){
                 col_counter++;
             }
         }
-        if(board[i][i] === "X")
+        if(board[i][i] === playerShape)
             slant_counter++;
 
-        if(board[i][board.length - i - 1] === 'X')
+        if(board[i][board.length - i - 1] === playerShape)
             opp_slant_counter++;
 
         if(slant_counter === board.length || opp_slant_counter === board.length || col_counter === board.length)
@@ -74,8 +69,10 @@ let sec_player = {}
 let choose_size;
 let board;
 
-first_player.name = prompt("Enter Player 1 name");
-sec_player.name = prompt("Enter Player 2 name");
+first_player.name = prompt("Enter Player 1 name").toString();
+sec_player.name = prompt("Enter Player 2 name").toString();
+first_player.shape = "X";
+sec_player.shape = "O";
 
 while(true){
     choose_size = prompt("Choose board size");
@@ -94,41 +91,41 @@ board = createBoard(choose_size);
 viewBoard(board);
 while(true){
     while(true){
-        first_player.row = prompt("Player 1: choose row");
-        first_player.col = prompt("Player 1: choose column");
+        first_player.row = prompt(`${first_player.name}: choose row`);
+        first_player.col = prompt(`${first_player.name}: choose column`);
 
         if(!checkInputValid(board.length, first_player.row, first_player.col)){
             console.log("INVALID INPUT TRY AGAIN");
         }
-        else if(!checkValidPlacement(board, first_player.row, first_player.col)){
+        else if(!checkValidPlacement(board, Number(first_player.row), Number(first_player.col))){
             console.log("INVALID PLACEMENT TRY AGAIN")
         }
         else{
             break;
         }
     }
-    board = updateBoardFirstPlayer(board, first_player.row, first_player.col);
+    board = updateBoardPlayer(board, Number(first_player.row), Number(first_player.col), first_player.shape);
     viewBoard(board);
-    if(checkGameOver(board)){
+    if(checkGameOver(board, first_player.shape)){
         console.log(`${first_player.name} HAS WON!!`);
         break;
     }
     while(true){
-        sec_player.row = prompt("Player 2: choose row");
-        sec_player.col = prompt("Player 2: choose column");
+        sec_player.row = prompt(`${sec_player.name}: choose row`);
+        sec_player.col = prompt(`${sec_player.name}: choose column`);
         if(!checkInputValid(board.length, sec_player.row, sec_player.col)){
             console.log("INVALID INPUT TRY AGAIN");
         }
-        else if(!checkValidPlacement(board, sec_player.row, sec_player.col)){
+        else if(!checkValidPlacement(board, Number(sec_player.row), Number(sec_player.col))){
             console.log("INVALID PLACEMENT TRY AGAIN")
         }
         else{
             break;
         }
     }
-    board = updateBoardSecPlayer(board, sec_player.row, sec_player.col);
+    board = updateBoardPlayer(board, Number(sec_player.row), Number(sec_player.col), sec_player.shape);
     viewBoard(board);
-    if(checkGameOver(board)){
+    if(checkGameOver(board, sec_player.shape)){
         console.log(`${sec_player.name} HAS WON!!`);
         break;
     }
