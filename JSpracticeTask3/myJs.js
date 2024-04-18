@@ -27,13 +27,12 @@ const updateBoardSecPlayer = (board, row, column) => {
 }
 
 const checkInputValid = (boardLength, rowInput, colInput) =>{
-    if(!Number(rowInput) && !Number(colInput)){
+    if(!Number(rowInput) && !Number(colInput))
         return false;
-    }
-    if(rowInput < 0 || rowInput > boardLength || colInput < 0 || colInput > boardLength){
-        return 0;
-    }
-
+    
+    if(rowInput < 0 || rowInput > boardLength || colInput < 0 || colInput > boardLength)
+        return false;
+    
     return true;
 }
 
@@ -43,10 +42,9 @@ const checkGameOver = (board, playerShape) =>{
     let opp_slant_counter = 0;
 
     for(let i = 0; i < board.length; i++){
-        if(board[i].every(element => element === board[i][0] && element === 'X')){
-            console.log("1");
+        if(board[i].every(element => element === board[i][0] && element === 'X'))
             return true;
-        }
+        
         for(let j = 0; j < board.length; j++){
             if(board[j][i] === "X"){
                 col_counter++;
@@ -74,21 +72,30 @@ let sec_player_col;
 let choose_size;
 let board;
 
-do{
+while(true){
     choose_size = prompt("Choose board size");
-    if(choose_size < 3){
+    if(choose_size < 3 || !Number(choose_size)){
         console.log("Error! Size needs to be 3 or above!");
     }
-}while(choose_size < 3);
+    else{
+        break;
+    }
+}
 
 board = createBoard(choose_size);
 viewBoard(board);
 while(true){
-    do{
-    first_player_row = prompt("Player 1: choose row");
-    first_player_col = prompt("Player 1: choose column");
-        
-    }while(!checkInputValid(board.length, first_player_row, first_player_col));
+    while(true){
+        first_player_row = prompt("Player 1: choose row");
+        first_player_col = prompt("Player 1: choose column");
+
+        if(!checkInputValid(board.length, first_player_row, first_player_col)){
+            console.log("INVALID TRY AGAIN");
+        }
+        else{
+            break;
+        }
+    }
 
     board = updateBoardFirstPlayer(board, first_player_row, first_player_col);
     viewBoard(board);
@@ -96,10 +103,16 @@ while(true){
         console.log("Player 1 WON");
         break;
     }
-    do{
+    while(true){
         sec_player_row = prompt("Player 2: choose row");
         sec_player_col = prompt("Player 2: choose column");
-    }while(!checkInputValid(board.length, sec_player_row, sec_player_col))
+        if(!checkInputValid(board.length, sec_player_row, sec_player_col)){
+            console.log("INVALID TRY AGAIN");
+        }
+        else{
+            break;
+        }
+    }
 
     board = updateBoardSecPlayer(board, sec_player_row, sec_player_col);
     viewBoard(board);
