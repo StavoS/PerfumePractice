@@ -26,7 +26,18 @@ const updateBoardSecPlayer = (board, row, column) => {
     return board;
 }
 
-const checkGameOver = (board) =>{
+const checkInputValid = (boardLength, rowInput, colInput) =>{
+    if(!Number(rowInput) && !Number(colInput)){
+        return false;
+    }
+    if(rowInput < 0 || rowInput > boardLength || colInput < 0 || colInput > boardLength){
+        return 0;
+    }
+
+    return true;
+}
+
+const checkGameOver = (board, playerShape) =>{
     let col_counter = 0;
     let slant_counter = 0;
     let opp_slant_counter = 0;
@@ -41,24 +52,15 @@ const checkGameOver = (board) =>{
                 col_counter++;
             }
         }
-        if(board[i][i] === "X"){
+        if(board[i][i] === "X")
             slant_counter++;
-        }
-        if(board[i][board.length - i - 1] === 'X'){
+
+        if(board[i][board.length - i - 1] === 'X')
             opp_slant_counter++;
-        }
-        if(slant_counter === board.length){
-            console.log("2");
+
+        if(slant_counter === board.length || opp_slant_counter === board.length || col_counter === board.length)
             return true;
-        }
-        if(opp_slant_counter === board.length){
-            console.log("3");
-            return true;
-        }
-        if(col_counter === board.length){
-            console.log("4");
-            return true;
-        }
+        
         col_counter = 0;
     }
 
@@ -82,17 +84,27 @@ do{
 board = createBoard(choose_size);
 viewBoard(board);
 while(true){
+    do{
     first_player_row = prompt("Player 1: choose row");
     first_player_col = prompt("Player 1: choose column");
+        
+    }while(!checkInputValid(board.length, first_player_row, first_player_col));
 
     board = updateBoardFirstPlayer(board, first_player_row, first_player_col);
     viewBoard(board);
-    console.log(checkGameOver(board));
-
-    sec_player_row = prompt("Player 2: choose row");
-    sec_player_col = prompt("Player 2: choose column");
+    if(checkGameOver(board)){
+        console.log("Player 1 WON");
+        break;
+    }
+    do{
+        sec_player_row = prompt("Player 2: choose row");
+        sec_player_col = prompt("Player 2: choose column");
+    }while(!checkInputValid(board.length, sec_player_row, sec_player_col))
 
     board = updateBoardSecPlayer(board, sec_player_row, sec_player_col);
     viewBoard(board);
-    console.log(checkGameOver(board));
+    if(checkGameOver(board)){
+        console.log("Player 2 WON");
+        break;
+    }
 }
