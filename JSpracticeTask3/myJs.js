@@ -26,9 +26,7 @@ const checkInputValid = (boardLength, rowInput, colInput) =>{
     return true;
 }
 
-const checkValidPlacement = (board, row, col) =>{
-     return board[row - 1][col - 1] === "?";
-}
+const checkValidPlacement = (board, row, col) => board[row - 1][col - 1] === "?";
 
 const updateBoardPlayer = (board, row, column, playerShape) =>{
     board[row - 1][column - 1] = playerShape;
