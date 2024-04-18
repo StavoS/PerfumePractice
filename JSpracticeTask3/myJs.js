@@ -30,10 +30,14 @@ const checkInputValid = (boardLength, rowInput, colInput) =>{
     if(!Number(rowInput) && !Number(colInput))
         return false;
     
-    if(rowInput < 0 || rowInput > boardLength || colInput < 0 || colInput > boardLength)
+    if(rowInput <= 0 || rowInput > boardLength || colInput <= 0 || colInput > boardLength)
         return false;
     
     return true;
+}
+
+const checkValidPlacement = (board, row, col) =>{
+     return board[row - 1][col - 1] === "?";
 }
 
 const checkGameOver = (board, playerShape) =>{
@@ -90,13 +94,15 @@ while(true){
         first_player_col = prompt("Player 1: choose column");
 
         if(!checkInputValid(board.length, first_player_row, first_player_col)){
-            console.log("INVALID TRY AGAIN");
+            console.log("INVALID INPUT TRY AGAIN");
+        }
+        else if(!checkValidPlacement(board, first_player_row, first_player_col)){
+            console.log("INVALID PLACEMENT TRY AGAIN")
         }
         else{
             break;
         }
     }
-
     board = updateBoardFirstPlayer(board, first_player_row, first_player_col);
     viewBoard(board);
     if(checkGameOver(board)){
@@ -107,13 +113,15 @@ while(true){
         sec_player_row = prompt("Player 2: choose row");
         sec_player_col = prompt("Player 2: choose column");
         if(!checkInputValid(board.length, sec_player_row, sec_player_col)){
-            console.log("INVALID TRY AGAIN");
+            console.log("INVALID INPUT TRY AGAIN");
+        }
+        else if(!checkValidPlacement(board, sec_player_row, sec_player_col)){
+            console.log("INVALID PLACEMENT TRY AGAIN")
         }
         else{
             break;
         }
     }
-
     board = updateBoardSecPlayer(board, sec_player_row, sec_player_col);
     viewBoard(board);
     if(checkGameOver(board)){
